@@ -35,7 +35,7 @@ COMPILE_TARGETS=
 
 # Testing targets.
 # Their directory will be on the Class Path.
-TEST_TARGETS= InputHandlerTests CoveringArrayTests PairwiseTests TruthTableTests
+TEST_TARGETS= 
 
 
 run: build
