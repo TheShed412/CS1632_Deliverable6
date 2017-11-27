@@ -1,5 +1,7 @@
 package rpnpackage;
 
+import  java.util.Arrays;
+
 /**
  * This will represent a LET command 
 */
@@ -8,9 +10,9 @@ public class Let implements Command {
 
 	private String command;
 	private Expression expression;
-	private char var; 
+	private String var; 
 
-	public Let(String line) {
+	public Let(String line) throws Exception {
 		command = LET;
 
 		/**
@@ -23,15 +25,13 @@ public class Let implements Command {
 
 		if (tempVar.length() != 1) {
 			throw new Exception("variable name too long");
-			return;
 		}
 
 		char tempChar = tempVar.charAt(0);
 		if (Character.isLetter(tempChar)) {
-			var = tempChar;
+			var = tempVar;
 		} else {
 			throw new Exception("no variable to assign value");
-			return;
 		}
 
 		/**
@@ -41,11 +41,19 @@ public class Let implements Command {
 		expression = new Expression(expArr);
 	}
 
-	public int evaluate() throws Exception {
-		return 0;
+	/**
+	 * This will take the symbol table and add the variable (key) to it
+	*/
+
+	public int evaluate(SymbolTable st) throws Exception {
+
+		int value = expression.evaluate(st);
+		st.put(var, value);
+
+		return value;
 	}
 
-	public getCommand() {
+	public String getCommand() {
 		return command;
 	} 
 

@@ -9,13 +9,11 @@ package rpnpackage;
 public class Expression implements Command {
 	
 	private String[] expression;
-	private command;
+	private String command;
 
 	public Expression(String[] expressionArr) {
 
-		expression = System.arraycopy(expressionArr, 0, 
-										expression, 0,
-										expressionArr.length);
+		System.arraycopy(expressionArr, 0, expression, 0, expressionArr.length);
 		command = EXP;
 	}
 
