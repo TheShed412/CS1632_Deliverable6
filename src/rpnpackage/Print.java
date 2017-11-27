@@ -1,5 +1,6 @@
 package rpnpackage;
 
+import  java.util.Arrays;
 /**
  * This will represent the print command 
 */
@@ -24,9 +25,13 @@ public class Print implements Command {
 		expression = new Expression(expArr);
 	}
 
-	public int evaluate(SymbolTable st) {
+	public int evaluate(SymbolTable st) throws Exception {
 
-		return 0;
+		int value = expression.evaluate(st);
+
+		System.out.println(value);
+
+		return value;
 	}
 
 	public String getCommand() {
