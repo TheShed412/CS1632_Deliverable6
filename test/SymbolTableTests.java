@@ -24,6 +24,7 @@ public class SymbolTableTests {
 			st.put("a", 13);
 
 		} catch (Exception e) {
+			System.out.println("Cannot store the same symbol");
 			return; //the test will pass
 		}
 
@@ -55,6 +56,30 @@ public class SymbolTableTests {
 		BigInteger bValue = st.get(bKey);
 
 		assertEquals(aValue, bValue);
+	}
+
+	/**
+	 * This test will check to see that variables with 
+	 * different case are not stored in the same table
+	*/
+	@Test
+	public void caseTest() {
+
+		SymbolTable st = new SymbolTable();
+
+		String capKey = "A";
+		String lowKey = "a";
+
+		try {
+			st.put(capKey, 1);
+			st.put(lowKey, 5);
+		} catch (Exception e) {
+			System.out.println("Cannot store the same symbol");
+			return; //the test will pass
+		}
+
+		fail();
+
 	}
 
 }
