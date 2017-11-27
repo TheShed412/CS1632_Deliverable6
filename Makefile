@@ -6,6 +6,9 @@
 # Example: java/src
 SRC_DIR=./src/
 
+# this is the path for the class files
+OUT_DIR=./out/
+
 # This is the path to your JUnit jars and such.
 JUNIT_DIR=./lib/
 
@@ -45,4 +48,7 @@ style:
 	java -jar $(JUNIT_DIR)checkstyle-7.0-all.jar -c ./google_checks_modified.xml $(SRC_DIR)*.java
 
 buildp:
-	javac -sourcepath $(SRC_DIR) $(SRC_DIR)RPN.java
+	javac -sourcepath $(SRC_DIR) -d $(OUT_DIR) $(SRC_DIR)RPN.java
+
+rpn: buildp
+	java -cp $(OUT_DIR) RPN
