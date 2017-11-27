@@ -43,8 +43,9 @@ public class Let implements Command {
 
 	/**
 	 * This will take the symbol table and add the variable (key) to it
+	 * Since everything after the first variable is an expression, it will 
+	 * be where we calculate the final value
 	*/
-
 	public int evaluate(SymbolTable st) throws Exception {
 
 		int value = expression.evaluate(st);
