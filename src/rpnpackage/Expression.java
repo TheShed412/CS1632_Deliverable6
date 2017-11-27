@@ -18,10 +18,27 @@ public class Expression implements Command {
 	}
 
 
-	public Expression(String expressionStr) {
+	public Expression(String expressionStr) throws Exception {
 
 		expression = expressionStr.split("\\s+");
 		command = EXP;
+
+		if (!checkValidExpression()) {
+			throw new Exception("invalid tokens");
+		}
+	}
+
+	private boolean checkValidExpression(){
+
+		for (String token : expression){
+
+			if (token.length() != 1) {
+				return false;
+			}//if
+
+		}//for
+
+		return true;
 	}
 
 	/**

@@ -10,7 +10,7 @@ public class Print implements Command {
 	private String command;
 	private Expression expression;
 
-	public Print(String line) {
+	public Print(String line) throws Exception {
 		command = PRINT;
 		/**
 		 * Split string in to array and get the expression
