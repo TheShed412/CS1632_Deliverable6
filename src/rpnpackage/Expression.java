@@ -11,6 +11,15 @@ public class Expression implements Command {
 	private String[] expression;
 	private command;
 
+	public Expression(String[] expressionArr) {
+
+		expression = System.arraycopy(expressionArr, 0, 
+										expression, 0,
+										expressionArr.length);
+		command = EXP;
+	}
+
+
 	public Expression(String expressionStr) {
 
 		expression = expressionStr.split("\\s+");
