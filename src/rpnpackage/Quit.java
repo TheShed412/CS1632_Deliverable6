@@ -10,7 +10,7 @@ public class Quit implements Command {
 		exitType = exit;
 	}
 
-	public int evaluate (SymbolTable st){
+	public int evaluate (SymbolTable st) throws Exception {
 		System.exit(exitType);
 		return exitType;
 	}

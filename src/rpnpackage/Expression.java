@@ -8,9 +8,23 @@ package rpnpackage;
 
 public class Expression implements Command {
 	
-	
+	private String[] expression;
+	private command;
 
-	public int evaluate(SymbolTable st){
+	public Expression(String expressionStr) {
+
+		expression = expressionStr.split("\\s+");
+		command = EXP;
+	}
+
+	/**
+	 * This evaluate will be where all of the solving will be done
+	 * LET and PRINT will both call this to Solve it's own expressions
+	 * 
+	 * This will throw an exception when it runs in to a malformed expression
+	*/
+
+	public int evaluate(SymbolTable st) throws Exception {
 
 		return 0;
 	}
