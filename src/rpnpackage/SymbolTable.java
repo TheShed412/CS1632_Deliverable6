@@ -57,4 +57,22 @@ public class SymbolTable extends HashMap<String, BigInteger> {
 		return value;
 	}
 
+	/**
+	 * This will overridde the hashmaps get method
+	 * 
+	 * We will throw an exception if the value returned
+	 * is null
+	*/
+
+	public BigInteger get(String key) throws Exception{
+
+		BigInteger value = super.get(key);
+
+		if (value.equals(null)) {
+			throw new Exception("variable was not initialized");
+		}
+
+		return value;
+	}
+
 }

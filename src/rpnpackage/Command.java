@@ -17,4 +17,6 @@ public interface Command {
 
 	public int evaluate(SymbolTable st);
 
+	public String getCommand();
+
 }

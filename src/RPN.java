@@ -1,5 +1,6 @@
 import rpnpackage.SymbolTable;
 import rpnpackage.Command;
+import rpnpackage.Quit;
 
 public class RPN {
 
