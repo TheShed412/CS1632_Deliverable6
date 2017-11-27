@@ -1,15 +1,18 @@
 package rpnpackage;
 
 import java.util.HashMap;
+import java.math.BigInteger;
 
 /**
  * This will be the table the stores all of the variables
  * 
  * It should be fast for look up and the variables are
  * case-insensitive (a = A) so we will store the lowercase
+ * 
+ * We extend hash mapusing string and biginteger for generics
 */
 
-public class SymbolTable extends HashMap<String, Integer> {
+public class SymbolTable extends HashMap<String, BigInteger> {
 
 
 	/**
@@ -21,7 +24,15 @@ public class SymbolTable extends HashMap<String, Integer> {
 	 * 	- add to map
 	*/
 	@Override
-	public Integer put(String key, Integer value){
+	public BigInteger put(String key, BigInteger value){
+
+		key = key.toLowerCase();
+
+		if (this.containsKey(key)) {
+			throw new IllegalStateException("symbol already in table");
+		} else {
+			super.put(key, value);
+		}
 
 		return value;
 	}
