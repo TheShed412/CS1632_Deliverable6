@@ -37,4 +37,24 @@ public class SymbolTable extends HashMap<String, BigInteger> {
 		return value;
 	}
 
+	/**
+	 * Overloading the hashmap put method
+	 * 
+	 * I just make the integer value coming in in to a 
+	 * BigInteger value. This will be for any number that is
+	 * not big enough to be e big int but so that we can 
+	 * seemlessly use one method
+	 * 
+	 * Also returns the biginteger version of the number
+	*/
+	public BigInteger put(String key, Integer _value){
+
+		key = key.toLowerCase();
+		BigInteger value = new BigInteger(_value.toString());
+
+		put(key, value);
+
+		return value;
+	}
+
 }

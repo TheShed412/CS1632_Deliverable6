@@ -3,6 +3,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.mockito.*;
 
+import rpnpackage.SymbolTable;
+
 public class SymbolTableTests {
 	
 	/**
@@ -12,8 +14,18 @@ public class SymbolTableTests {
 	@Test
 	public void exceptionPutTest() {
 
+		SymbolTable st = new SymbolTable();
 		
+		try{
+			st.put("a", 99);
+			st.put("b", 91);
+			st.put("a", 13);
 
+		} catch (Exception e) {
+			return; //the test will pass
+		}
+
+		fail();
 	}
 
 }
