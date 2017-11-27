@@ -1,3 +1,4 @@
+import rpnpackage.SymbolTable;
 
 public class RPN {
 
@@ -6,7 +7,7 @@ public class RPN {
 	*/
 	
 	public static void main (String[] args){
-		
+
 	}
 
 }
