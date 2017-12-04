@@ -10,6 +10,8 @@ import java.math.BigInteger;
 */
 
 public class Expression implements Command {
+
+	private final String OPS = "+-*/";
 	
 	private String[] expression;
 	private String command;
@@ -67,6 +69,37 @@ public class Expression implements Command {
 
 		getValuesFromST(st); //moves values to expression
 		// DO THE STACK STUFF
+
+		Stack<BigInteger> rpnStack = new Stack<>();
+
+		for(String token : expression) {
+
+			// if the token is a number, push to the stack
+			if(!OPS.contains(token)) {
+				rpnStack.push(new BigInteger(token));
+			} else {
+				// if it's an operator, we operate on the last 2 values
+				BigInteger tok1 = rpnStack.pop();
+				BigInteger tok2 = rpnStack.pop();
+
+				switch(token) {
+					case "+":
+						rpnStack.push(tok2.add(tok1));
+						break;
+					case "-":
+						rpnStack.push(tok2.subtract(tok1));
+						break;
+					case "*":
+						rpnStack.push(tok2.multiply(tok1));
+						break;
+					case "/":
+						rpnStack.push(tok2.divide(tok1));
+						break;
+
+				}//switch
+			}//else
+
+		}//for
 
 		return 0;
 	}

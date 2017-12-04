@@ -3,6 +3,7 @@ import rpnpackage.Command;
 import rpnpackage.Quit;
 import rpnpackage.Let;
 import rpnpackage.Print;
+import rpnpackage.Expression;
 
 public class RPN {
 
