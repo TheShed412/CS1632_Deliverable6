@@ -1,6 +1,7 @@
 package rpnpackage;
 
 import  java.util.Arrays;
+import java.math.BigInteger;
 /**
  * This will represent the print command 
 */
@@ -25,11 +26,11 @@ public class Print implements Command {
 		expression = new Expression(expArr);
 	}
 
-	public int evaluate(SymbolTable st) throws Exception {
+	public BigInteger evaluate(SymbolTable st) throws Exception {
 
-		int value = expression.evaluate(st);
+		BigInteger value = expression.evaluate(st);
 
-		System.out.println(value);
+		System.out.println(value.toString());
 
 		return value;
 	}

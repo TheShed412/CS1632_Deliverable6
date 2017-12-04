@@ -61,7 +61,7 @@ public class Expression implements Command {
 	 * This will throw an exception when it runs in to a malformed expression
 	*/
 
-	public int evaluate(SymbolTable st) throws Exception {
+	public BigInteger evaluate(SymbolTable st) throws Exception {
 
 		if (!checkValidExpression()) {
 			throw new Exception("invalid tokens");
@@ -95,13 +95,16 @@ public class Expression implements Command {
 					case "/":
 						rpnStack.push(tok2.divide(tok1));
 						break;
+					default:
+						throw new Exception("invalid tokens");
 
 				}//switch
 			}//else
 
 		}//for
 
-		return 0;
+		//have to change eturn value to BigInt
+		return rpnStack.pop();
 	}
 
 	private void getValuesFromST(SymbolTable st) throws Exception {

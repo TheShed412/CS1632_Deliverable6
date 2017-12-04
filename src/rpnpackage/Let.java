@@ -1,6 +1,7 @@
 package rpnpackage;
 
 import  java.util.Arrays;
+import java.math.BigInteger;
 
 /**
  * This will represent a LET command 
@@ -46,9 +47,9 @@ public class Let implements Command {
 	 * Since everything after the first variable is an expression, it will 
 	 * be where we calculate the final value
 	*/
-	public int evaluate(SymbolTable st) throws Exception {
+	public BigInteger evaluate(SymbolTable st) throws Exception {
 
-		int value = expression.evaluate(st);
+		BigInteger value = expression.evaluate(st);
 		st.put(var, value);
 
 		return value;

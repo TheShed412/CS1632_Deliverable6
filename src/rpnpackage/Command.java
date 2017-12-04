@@ -1,5 +1,7 @@
 package rpnpackage;
 
+import java.math.BigInteger;
+
 /**
  * 
  * This interface will represent one of 3 commands:
@@ -16,7 +18,7 @@ public interface Command {
 	public static final String LET = "LET";
 	public static final String EXP = "EXP";
 
-	public int evaluate(SymbolTable st) throws Exception;
+	public BigInteger evaluate(SymbolTable st) throws Exception;
 
 	public String getCommand();
 

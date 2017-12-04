@@ -1,5 +1,8 @@
 package rpnpackage;
 
+import java.math.BigInteger;
+
+
 public class Quit implements Command {
 
 	private String command;
@@ -10,9 +13,9 @@ public class Quit implements Command {
 		exitType = exit;
 	}
 
-	public int evaluate (SymbolTable st) throws Exception {
+	public BigInteger evaluate (SymbolTable st) throws Exception {
 		System.exit(exitType);
-		return exitType;
+		return null;
 	}
 
 	public String getCommand(){
