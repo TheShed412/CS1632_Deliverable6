@@ -6,14 +6,20 @@ public class RPN {
 
 	private RPN(String[] args) {
 		if(args.length == 0) {
-			RPNReader reader = new RPNReplReader();
+			reader = new RPNReplReader();
 		} else {
-			RPNReader reader = new RPNFileReader(args);
+			reader = new RPNFileReader(args);
+		}
+
+		boolean reading = true;
+		while(reading) {
+			String thisLine = reader.nextLine();
+
+			if(thisLine == null) reading = false;
+			else System.out.println(thisLine);
+			System.out.println("Line Number: " + reader.getLineNumber());
 		}
 	}
-
-
-
 
 
 	/**
