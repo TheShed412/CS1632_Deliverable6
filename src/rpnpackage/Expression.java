@@ -134,7 +134,7 @@ public class Expression implements Command {
 
 			if (Character.isLetter(temp)) {
 
-				tempInt = st.get(token);
+				tempInt = st.get(token.toLowerCase());
 				expression[i] = tempInt.toString();
 			}
 
