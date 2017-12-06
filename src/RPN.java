@@ -17,7 +17,7 @@ public class RPN {
 			reader = new RPNFileReader(args);
 			} catch(Exception e){
 				System.err.println(e.getMessage());
-				System.exit(5);				
+				System.exit(5);
 			}
 			isFile = true;
 		}
@@ -27,14 +27,14 @@ public class RPN {
 			Command cmd;
 			SymbolTable st = new SymbolTable();
 			BigInteger value;
-			
+
 			while(!(expression == null)) {
 				//get the expression and line number
 				expression = reader.nextLine();
 				if(expression.equals("")) {
 					continue;
 				}
-				
+
 				currentLine = reader.getLineNumber();
 
 					try{
@@ -48,7 +48,7 @@ public class RPN {
 					}
 
 					// now I have the expression
-					try{ 
+					try{
 						value = cmd.evaluate(st);
 						if (!isFile || cmd.getCommand().equals(Command.PRINT))
 							System.out.println(value.toString());
