@@ -122,6 +122,74 @@ public class ExpressionTest {
 		fail();
 	}
 
+	@Test
+	public void invalideExpressionTest2() throws Exception {
+		String invalideRpn = "3 4 + +";
+
+		Expression exp = new Expression(invalideRpn);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		try {
+			exp.evaluate(st);
+		} catch (Exception e) {
+			return;
+		}
+
+		fail();
+	}
+
+	@Test
+	public void invalideExpressionTest3() throws Exception {
+		String invalideRpn = "3 4 6 +";
+
+		Expression exp = new Expression(invalideRpn);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		try {
+			exp.evaluate(st);
+		} catch (Exception e) {
+			return;
+		}
+
+		fail();
+	}
+
+	@Test
+	public void invalideExpressionTest4() throws Exception {
+		String invalideRpn = "* +";
+
+		Expression exp = new Expression(invalideRpn);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		try {
+			exp.evaluate(st);
+		} catch (Exception e) {
+			return;
+		}
+
+		fail();
+	}
+
+	@Test
+	public void invalideExpressionTest5() throws Exception {
+		String invalideRpn = "&";
+
+		Expression exp = new Expression(invalideRpn);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		try {
+			exp.evaluate(st);
+		} catch (Exception e) {
+			return;
+		}
+
+		fail();
+	}
+
 	private int getInt(BigInteger bi) {
 		String str = bi.toString();
 		return Integer.parseInt(str);
