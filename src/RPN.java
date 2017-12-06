@@ -49,8 +49,6 @@ public class RPN {
 		} else {
 			reader = new RPNFileReader(args);
 		}
-	}
-
 
 	private Command getCommand(String expression) throws Exception {
 

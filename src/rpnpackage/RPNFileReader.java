@@ -16,7 +16,7 @@ public class RPNFileReader implements RPNReader {
   private Queue<String> fileNames;
 
   private BufferedReader currentReader = null;
-  private int line = 0;
+  private int lineNumber = 0;
 
 
   public RPNFileReader(String[] filenames) {
@@ -32,7 +32,8 @@ public class RPNFileReader implements RPNReader {
 
   private boolean isRPNFile(String filename) {
     int length = filename.length();
-    String fileType = filename.substring(length-3, length);
+    if(length < 5) return false;
+    String fileType = filename.substring(length-4, length);
     if(fileType.toLowerCase().equals(type)) {
       return true;
     } else {
@@ -41,22 +42,43 @@ public class RPNFileReader implements RPNReader {
   }
 
   public String nextLine() {
-    if(currentReader == null && fileNames.element() == null) {
-      return null;
+    // At the beginning and no files open yet
+    if(lineNumber == 0 && hasFile()) {
+      try {
+        currentReader = new BufferedReader(new FileReader(fileNames.remove()));
+      } catch(FileNotFoundException fnfe) {}
     }
-    try {
-      currentReader = new BufferedReader(new FileReader(fileNames.remove()));
-      return currentReader.readLine();
 
-    } catch(FileNotFoundException fnfe) {
+    // Initialize line to token value
+    String line = "";
+    boolean reading = true;
+    while(reading) {
+      try {
+        line = currentReader.readLine();
+      } catch(IOException ioe) {}
 
-    } catch(IOException ioe) {
+      if(line == null && hasFile()) {
+        try {
+          currentReader = new BufferedReader(new FileReader(fileNames.remove()));
+          continue;
+        } catch(FileNotFoundException fnfe) {}
+      }
 
+      if(line == null) return null;
+
+      if(!line.equals("")) reading = false;
     }
-    return null;
+
+    lineNumber++;
+    return line;
+  }
+
+  private boolean hasFile() {
+    if(fileNames.peek() == null) return false;
+    else return true;
   }
 
   public int getLineNumber() {
-    return -1;
+    return lineNumber;
   }
 }
