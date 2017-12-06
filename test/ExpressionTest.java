@@ -23,6 +23,10 @@ public class ExpressionTest {
 		assertEquals(actual, expected);
 	}
 
+	/**
+	 * Testing that multi-digit numbers are treated as numbers
+	*/
+
 	@Test
 	public void evaluateDoubleDigitTest() throws Exception {
 		String rpnStr = "12 3 - 3 /";
@@ -38,6 +42,10 @@ public class ExpressionTest {
 
 		assertEquals(actual, expected);
 	}
+
+	/**
+	 * Testing that negative numbers are evaluated correctly
+	*/
 
 	@Test
 	public void evaluateNegativeTest() throws Exception {
@@ -70,6 +78,10 @@ public class ExpressionTest {
 
 		assertEquals(actual, expected);
 	}
+
+	/**
+	 * Cases of really big and really small numbers
+	*/
 
 	@Test
 	public void evaluateBigNumTest() throws Exception {
@@ -104,6 +116,10 @@ public class ExpressionTest {
 
 		assertEquals(actual, expected);
 	}
+
+	/**
+	 * Tests that are for invalid expressions
+	*/
 	
 	@Test
 	public void invalideExpressionTest() throws Exception {
