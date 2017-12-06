@@ -114,6 +114,10 @@ public class Expression implements Command {
 			throw new Exception(rpnStack.size() + " elements in stack after eveluation");
 		}
 
+		if (rpnStack.size() < 1) {
+			throw new Exception(rpnStack.size() + " operator LET applied to empty stack");
+		}
+
 		//have to change eturn value to BigInt
 		return rpnStack.pop();
 	}
