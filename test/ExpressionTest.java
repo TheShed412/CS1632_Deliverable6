@@ -23,6 +23,23 @@ public class ExpressionTest {
 		assertEquals(actual, expected);
 	}
 
+	@Test
+	public void evaluateDoubleDigitTest() throws Exception {
+		String rpnStr = "12 3 - 3 /";
+		int expected = 3;
+
+		Expression exp = new Expression(rpnStr);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		BigInteger actualBI = exp.evaluate(st);
+
+		int actual = getInt(actualBI);
+
+		assertEquals(actual, expected);
+	}
+
+
 	private int getInt(BigInteger bi) {
 		String str = bi.toString();
 		return Integer.parseInt(str);
