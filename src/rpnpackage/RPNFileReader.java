@@ -2,10 +2,12 @@ package rpnpackage;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.Arrays;
+import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class RPNFileReader implements RPNReader {
 
@@ -18,7 +20,7 @@ public class RPNFileReader implements RPNReader {
 
   public RPNFileReader(String[] filenames) {
     for(int i = 0; i < filenames.length; i++) {
-      if(!isRPNFile(filenames[i]) {
+      if(!isRPNFile(filenames[i])) {
         System.err.println("Argument has invalid file type");
         System.exit(-1);
       }
@@ -28,9 +30,9 @@ public class RPNFileReader implements RPNReader {
   }
 
   private boolean isRPNFile(String filename) {
-    int length = filename.length()
+    int length = filename.length();
     String fileType = filename.substring(length-3, length);
-    if(filetype.toLowercase().equals(type)) {
+    if(fileType.toLowerCase().equals(type)) {
       return true;
     } else {
       return false;
@@ -38,15 +40,22 @@ public class RPNFileReader implements RPNReader {
   }
 
   public String nextLine() {
-    if(currentReader = null) {
-      if(fileNames.element() = null) {
-        return null;
-      } else {
-        currentReader = new BufferedReader(new FileReader(fileNames.remove()))
-      }
+    if(currentReader == null && fileNames.element() == null) {
+      return null;
     }
+    try {
+      currentReader = new BufferedReader(new FileReader(fileNames.remove()));
+      return currentReader.readLine();
 
-    return currentReader.nextLine();
+    } catch(FileNotFoundException fnfe) {
+
+    } catch(IOException ioe) {
+
+    }
     return null;
+  }
+
+  public int getLineNumber() {
+    return -1;
   }
 }

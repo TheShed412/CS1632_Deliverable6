@@ -7,8 +7,7 @@ public class RPNReplReader implements RPNReader {
     return null;
   }
 
-  public String getLine() {
-    return null;
+  public int getLineNumber() {
+    return -1;
   }
-
 }
