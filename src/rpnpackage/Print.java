@@ -22,15 +22,13 @@ public class Print implements Command {
 		 * the expression will start at the second element
 		 * in the array
 		*/
-		String[] expArr = Arrays.copyOfRange(tempArr, 2, tempArr.length-1);
+		String[] expArr = Arrays.copyOfRange(tempArr, 1, tempArr.length);
 		expression = new Expression(expArr);
 	}
 
 	public BigInteger evaluate(SymbolTable st) throws Exception {
 
 		BigInteger value = expression.evaluate(st);
-
-		System.out.println(value.toString());
 
 		return value;
 	}

@@ -74,7 +74,7 @@ public class Expression implements Command {
 		Stack<BigInteger> rpnStack = new Stack<>();
 
 		for(String token : expression) {
-
+			
 			// if the token is a number, push to the stack
 			if(!OPS.contains(token)) {
 				rpnStack.push(new BigInteger(token));

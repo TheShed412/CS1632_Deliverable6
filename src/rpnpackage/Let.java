@@ -38,7 +38,7 @@ public class Let implements Command {
 		/**
 		 * Now I make the expression
 		*/
-		String[] expArr = Arrays.copyOfRange(tempArr, 1, tempArr.length);
+		String[] expArr = Arrays.copyOfRange(tempArr, 2, tempArr.length);
 		expression = new Expression(expArr);
 	}
 
