@@ -28,7 +28,7 @@ public class Expression implements Command {
 
 
 	public Expression(String expressionStr) throws Exception {
-
+		//I split all whitespace with regex
 		expression = expressionStr.split("\\s+");
 		command = EXP;
 
