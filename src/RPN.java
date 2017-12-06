@@ -23,7 +23,7 @@ public class RPN {
 			SymbolTable st = new SymbolTable();
 			BigInteger value;
 			
-			while(!expression == null) {
+			while(!(expression == null)) {
 				//get the expression and line number
 				expression = reader.nextLine();
 				if(expression.equals("")) {
@@ -36,6 +36,9 @@ public class RPN {
 						cmd = getCommand(expression);
 					} catch (Exception e) {
 						System.err.println("Line "+ currentLine + ": " + e.getMessage());
+
+						shouldExit(e.getMessage(), isFile);
+
 						continue;
 					}
 
@@ -46,10 +49,24 @@ public class RPN {
 							System.out.println(value.toString());
 					} catch (Exception e) {
 						System.err.println("Line "+ currentLine + ": " + e.getMessage());
+
+						shouldExit(e.getMessage(), isFile);
 					}
 
 
 			}//while
+
+	}
+
+	private void shouldExit(String error, boolean isFile) {
+
+		if (error.contains("unknown keyword") && isFile){
+			System.exit(4);
+		} else if (error.contains("elements in stack after evaluation") && isFile){
+			System.exit(3);
+		} else if (isFile){
+			System.exit(5);
+		}
 
 	}
 
