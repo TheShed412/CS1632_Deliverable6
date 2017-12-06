@@ -103,6 +103,10 @@ public class Expression implements Command {
 
 		}//for
 
+		if (rpnStack.size() > 1) {
+			throw new Exception("malformed expression");
+		}
+
 		//have to change eturn value to BigInt
 		return rpnStack.pop();
 	}

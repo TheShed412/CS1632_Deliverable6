@@ -105,7 +105,22 @@ public class ExpressionTest {
 		assertEquals(actual, expected);
 	}
 	
+	@Test
+	public void invalideExpressionTest() throws Exception {
+		String invalideRpn = "3 4";
 
+		Expression exp = new Expression(invalideRpn);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		try {
+			exp.evaluate(st);
+		} catch (Exception e) {
+			return;
+		}
+
+		fail();
+	}
 
 	private int getInt(BigInteger bi) {
 		String str = bi.toString();
