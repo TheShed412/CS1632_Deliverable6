@@ -19,11 +19,10 @@ public class RPNFileReader implements RPNReader {
   private int lineNumber = 0;
 
 
-  public RPNFileReader(String[] filenames) {
+  public RPNFileReader(String[] filenames) throws Exception {
     for(int i = 0; i < filenames.length; i++) {
       if(!isRPNFile(filenames[i])) {
-        System.err.println("Argument has invalid file type");
-        System.exit(-1);
+        throw new Exception("Argument has invalid file type");
       }
     }
 
@@ -32,6 +31,7 @@ public class RPNFileReader implements RPNReader {
 
   private boolean isRPNFile(String filename) {
     int length = filename.length();
+    if(filename.contains(" ")) return false;
     if(length < 5) return false;
     String fileType = filename.substring(length-4, length);
     if(fileType.toLowerCase().equals(type)) {

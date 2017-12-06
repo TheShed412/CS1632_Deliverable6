@@ -13,7 +13,12 @@ public class RPN {
 			reader = new RPNReplReader();
 
 		} else {
+			try{
 			reader = new RPNFileReader(args);
+			} catch(Exception e){
+				System.err.println(e.getMessage());
+				System.exit(5);				
+			}
 			isFile = true;
 		}
 
