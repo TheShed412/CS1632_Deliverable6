@@ -35,11 +35,11 @@ CLASS_PATH_RUN=$(JUNIT_DIR)hamcrest-core-1.3.jar:$(CLASS_PATH_COMPILE):$(SRC_DIR
 RUNNER=org.junit.runner.JUnitCore
 
 # ADD NEW FILES to compile here.
-COMPILE_TARGETS= $(PACK_DIR)SymbolTable.java $(TEST_DIR)SymbolTableTests.java $(PACK_DIR)Expression.java $(TEST_DIR)ExpressionTest.java $(PACK_DIR)Command.java
+COMPILE_TARGETS= $(PACK_DIR)SymbolTable.java $(TEST_DIR)SymbolTableTests.java $(PACK_DIR)Expression.java $(TEST_DIR)ExpressionTest.java $(PACK_DIR)Let.java $(TEST_DIR)LetTest.java $(PACK_DIR)Command.java
 
 # Testing targets.
 # Their directory will be on the Class Path.
-TEST_TARGETS= SymbolTableTests ExpressionTest
+TEST_TARGETS= SymbolTableTests ExpressionTest LetTest
 
 
 run: build
