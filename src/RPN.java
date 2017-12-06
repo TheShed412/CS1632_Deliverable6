@@ -23,7 +23,7 @@ public class RPN {
 			SymbolTable st = new SymbolTable();
 			BigInteger value;
 			
-			while(!expression.equals(null)) {
+			while(!expression == null) {
 				//get the expression and line number
 				expression = reader.nextLine();
 				if(expression.equals("")) {

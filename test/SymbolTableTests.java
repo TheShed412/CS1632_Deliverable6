@@ -82,4 +82,19 @@ public class SymbolTableTests {
 
 	}
 
+	@Test
+	public void getTest() {
+
+		SymbolTable st = new SymbolTable();
+		String message = "";
+
+		try {
+			st.get("a");
+		} catch(Exception e) {
+			message = e.getMessage();
+		}
+
+		assertEquals(message, "variable a was not initialized");
+	}
+
 }
