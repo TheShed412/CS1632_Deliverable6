@@ -23,7 +23,7 @@ public class Expression implements Command {
 		command = EXP;
 
 		if (!checkValidExpression()) {
-			throw new Exception("invalid tokens");
+			throw new Exception("unknown keyword " + expression[0]);
 		}
 	}
 
@@ -34,7 +34,7 @@ public class Expression implements Command {
 		command = EXP;
 
 		if (!checkValidExpression()) {
-			throw new Exception("invalid tokens");
+			throw new Exception("unknown keyword " + expressionStr);
 		}
 	}
 
@@ -65,7 +65,7 @@ public class Expression implements Command {
 	public BigInteger evaluate(SymbolTable st) throws Exception {
 
 		if (!checkValidExpression()) {
-			throw new Exception("unknown keyword" + expression[0]);
+			throw new Exception("unknown keyword " + expression[0]);
 		}
 
 		getValuesFromST(st); //moves values to expression

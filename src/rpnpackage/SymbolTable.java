@@ -69,7 +69,7 @@ public class SymbolTable extends HashMap<String, BigInteger> {
 		BigInteger value = super.get(key);
 
 		if (value == null) {
-			throw new Exception("variable" + key + "was not initialized");
+			throw new Exception("variable " + key + " was not initialized");
 		}
 
 		return value;
