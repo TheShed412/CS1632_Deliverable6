@@ -37,6 +37,7 @@ public class RPN {
 						System.out.println(value.toString());
 					} catch (Exception e) {
 						System.err.println("Line "+ currentLine + ": something happened in eval");
+						e.printStackTrace(System.err);
 					}
 
 					
