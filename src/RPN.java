@@ -5,6 +5,7 @@ import java.math.BigInteger;
 public class RPN {
 
 	RPNReader reader;
+	boolean isFile = false;
 
 	private RPN(String[] args) {
 		if(args.length == 0) {
@@ -13,6 +14,7 @@ public class RPN {
 
 		} else {
 			reader = new RPNFileReader(args);
+			isFile = true;
 		}
 
 			String expression = "";
@@ -40,7 +42,8 @@ public class RPN {
 					// now I have the expression
 					try{ 
 						value = cmd.evaluate(st);
-						System.out.println(value.toString());
+						if (!isFile || cmd.getCommand().equals(Command.PRINT))
+							System.out.println(value.toString());
 					} catch (Exception e) {
 						System.err.println("Line "+ currentLine + ": " + e.getMessage());
 					}
