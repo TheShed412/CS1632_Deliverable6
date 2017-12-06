@@ -10,20 +10,21 @@ public class RPN {
 		if(args.length == 0) {
 
 			reader = new RPNReplReader();
-			String expression;
+			String expression = "";
 			int currentLine;
 			Command cmd;
 			SymbolTable st = new SymbolTable();
 			BigInteger value;
 			
-			while(true) {
+			while(!expression.equals(null)) {
 				//get the expression and line number
 				expression = reader.nextLine();
+				if(expression.equals("")) {
+					continue;
+				}
+				
 				currentLine = reader.getLineNumber();
 
-				if(expression.equals(null)) {
-					System.out.println("Line "+ currentLine + ": an error occured");
-				} else {
 					try{
 						cmd = getCommand(expression);
 					} catch (Exception e) {
@@ -40,15 +41,14 @@ public class RPN {
 						e.printStackTrace(System.err);
 					}
 
-					
-
-				}//else
 
 			}//while
 
 		} else {
 			reader = new RPNFileReader(args);
 		}
+
+	}
 
 	private Command getCommand(String expression) throws Exception {
 

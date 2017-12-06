@@ -18,7 +18,6 @@ public class RPNReplReader implements RPNReader {
   public String nextLine() {
 
     System.out.print("> ");
-    lineNumber ++;
     String expression = "";
 
     try{
@@ -26,6 +25,9 @@ public class RPNReplReader implements RPNReader {
     } catch (Exception e) {
       return null;
     }
+
+    if (!expression.equals(""))
+      lineNumber ++;
 
     return expression;
   }
