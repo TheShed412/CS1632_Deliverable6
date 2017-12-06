@@ -6,6 +6,10 @@ import java.math.BigInteger;
 import rpnpackage.*;
 
 public class FileReaderTest {
+
+	/**
+	 * testing a malformed extension is not used
+	*/
 	
 	@Test
 	public void constructorInvalidExtensionTest() {
@@ -21,6 +25,10 @@ public class FileReaderTest {
 		fail();
 	}
 
+	/**
+	 * checking that a name must be included
+	*/
+
 	@Test
 	public void constructorInvalidLengthTest() {
 
@@ -35,7 +43,9 @@ public class FileReaderTest {
 		fail();
 	}
 
-
+	/**
+	 * checking for names with whitespace
+	*/
 	@Test
 	public void constructorInvalidWhiteSpaceTest() {
 

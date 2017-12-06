@@ -7,9 +7,34 @@ import rpnpackage.*;
 
 public class ExpressionTest {
 
+	/**
+	 * This is the main RPN solver
+	 * 
+	 * It requires most of the tests to test possible corner and edge cases
+	 * this covers all command evaluates methods since the other classes
+	 * call this one for evaluation
+	 * 
+	*/
+
 	@Test
 	public void evaluateSimpleTest() throws Exception {
 		String rpnStr = "3 2 -";
+		int expected = 1;
+
+		Expression exp = new Expression(rpnStr);
+
+		SymbolTable st = Mockito.mock(SymbolTable.class);
+
+		BigInteger actualBI = exp.evaluate(st);
+
+		int actual = getInt(actualBI);
+
+		assertEquals(actual, expected);
+	}
+
+	@Test
+	public void evaluateSimple2Test() throws Exception {
+		String rpnStr = "3 2 *";
 		int expected = 1;
 
 		Expression exp = new Expression(rpnStr);

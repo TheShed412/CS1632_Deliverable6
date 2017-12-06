@@ -82,6 +82,10 @@ public class SymbolTableTests {
 
 	}
 
+	/**
+	 * cheking that something that wasn't added with throw an exception
+	*/
+
 	@Test
 	public void getTest() {
 
