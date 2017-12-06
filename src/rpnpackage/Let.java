@@ -32,7 +32,7 @@ public class Let implements Command {
 		if (Character.isLetter(tempChar)) {
 			var = tempVar;
 		} else {
-			throw new Exception("no variable to assign value");
+			throw new Exception("could not evaluate expression");
 		}
 
 		/**

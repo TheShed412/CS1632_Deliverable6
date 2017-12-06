@@ -33,7 +33,7 @@ public class RPN {
 					try{
 						cmd = getCommand(expression);
 					} catch (Exception e) {
-						System.err.println("Line: "+ currentLine + " " + e.getMessage());
+						System.err.println("Line "+ currentLine + ": " + e.getMessage());
 						continue;
 					}
 
@@ -42,7 +42,7 @@ public class RPN {
 						value = cmd.evaluate(st);
 						System.out.println(value.toString());
 					} catch (Exception e) {
-						System.err.println("Line: "+ currentLine + " " + e.getMessage());
+						System.err.println("Line "+ currentLine + ": " + e.getMessage());
 					}
 
 

@@ -103,7 +103,7 @@ public class Expression implements Command {
 						rpnStack.push(tok2.divide(tok1));
 						break;
 					default:
-						throw new Exception("invalid tokens");
+						throw new Exception("unknown keyword");
 
 				}//switch
 			}//else
