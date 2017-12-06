@@ -1,6 +1,6 @@
 package rpnpackage;
 
-public Interface RPNReader {
+public interface RPNReader {
   public String nextLine();
-  public int getLine();
+  public int getLineNumber();
 }

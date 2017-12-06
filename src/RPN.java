@@ -6,9 +6,9 @@ public class RPN {
 
 	private RPN(String[] args) {
 		if(args.length == 0) {
-			RPNReader = new RPNReplReader();
+			RPNReader reader = new RPNReplReader();
 		} else {
-			RPNReader = new RPNFileReader(args);
+			RPNReader reader = new RPNFileReader(args);
 		}
 	}
 
