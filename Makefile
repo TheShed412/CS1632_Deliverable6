@@ -54,6 +54,6 @@ style:
 buildp:
 	javac -sourcepath $(SRC_DIR) -d $(OUT_DIR) $(SRC_DIR)RPN.java
 
-VAR="default"
+VAR=
 rpn: buildp
 	java -cp $(OUT_DIR) RPN $(VAR)

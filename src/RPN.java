@@ -1,24 +1,70 @@
 import rpnpackage.*;
 
+import java.math.BigInteger;
+
 public class RPN {
 
 	RPNReader reader;
 
 	private RPN(String[] args) {
 		if(args.length == 0) {
+
 			reader = new RPNReplReader();
+			String expression;
+			int currentLine;
+			Command cmd;
+			SymbolTable st = new SymbolTable();
+			BigInteger value;
+			
+			while(true) {
+				//get the expression and line number
+				expression = reader.nextLine();
+				currentLine = reader.getLineNumber();
+
+				if(expression.equals(null)) {
+					System.out.println("Line "+ currentLine + ": an error occured");
+				} else {
+					try{
+						cmd = getCommand(expression);
+					} catch (Exception e) {
+						System.err.println("Line "+ currentLine + ": something happened");
+						continue;
+					}
+
+					// now I have the expression
+					try{ 
+						value = cmd.evaluate(st);
+						System.out.println(value.toString());
+					} catch (Exception e) {
+						System.err.println("Line "+ currentLine + ": something happened in eval");
+						e.printStackTrace(System.err);
+					}
+
+					
+
+				}//else
+
+			}//while
+
 		} else {
 			reader = new RPNFileReader(args);
 		}
 
-		boolean reading = true;
-		while(reading) {
-			String thisLine = reader.nextLine();
+	private Command getCommand(String expression) throws Exception {
 
-			if(thisLine == null) reading = false;
-			else System.out.println(thisLine);
-			System.out.println("Line Number: " + reader.getLineNumber());
-		}
+		Command ret;
+
+			if (expression.toLowerCase().contains("print")) {
+				ret = new Print(expression);
+			} else if (expression.toLowerCase().contains("let")) {
+				ret = new Let(expression);
+			} else if (expression.toLowerCase().contains("quit")) {
+				ret = new Quit(expression);
+			} else {
+				ret = new Expression(expression);
+			}
+
+		return ret;
 	}
 
 

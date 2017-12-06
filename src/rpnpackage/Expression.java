@@ -17,7 +17,8 @@ public class Expression implements Command {
 	private String command;
 
 	public Expression(String[] expressionArr) throws Exception {
-
+		
+		expression = new String[expressionArr.length];
 		System.arraycopy(expressionArr, 0, expression, 0, expressionArr.length);
 		command = EXP;
 
