@@ -10,6 +10,11 @@ public class RPN {
 		if(args.length == 0) {
 
 			reader = new RPNReplReader();
+
+		} else {
+			reader = new RPNFileReader(args);
+		}
+
 			String expression = "";
 			int currentLine;
 			Command cmd;
@@ -43,10 +48,6 @@ public class RPN {
 
 
 			}//while
-
-		} else {
-			reader = new RPNFileReader(args);
-		}
 
 	}
 
