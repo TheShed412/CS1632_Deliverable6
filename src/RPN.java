@@ -1,5 +1,7 @@
 import rpnpackage.*;
 
+import java.math.BigInteger;
+
 public class RPN {
 
 	RPNReader reader;
@@ -12,6 +14,7 @@ public class RPN {
 			int currentLine;
 			Command cmd;
 			SymbolTable st = new SymbolTable();
+			BigInteger value;
 			
 			while(true) {
 				//get the expression and line number
@@ -21,12 +24,26 @@ public class RPN {
 				if(expression.equals(null)) {
 					System.out.println("Line "+ currentLine + ": an error occured");
 				} else {
+					try{
+						cmd = getCommand(expression);
+					} catch (Exception e) {
+						System.err.println("Line "+ currentLine + ": something happened");
+						continue;
+					}
 
-					cmd = getCommand(expression);
+					// now I have the expression
+					try{ 
+						value = cmd.evaluate(st);
+						System.out.println(value.toString());
+					} catch (Exception e) {
+						System.err.println("Line "+ currentLine + ": something happened in eval");
+					}
 
-				}
+					
 
-			}
+				}//else
+
+			}//while
 
 		} else {
 			reader = new RPNFileReader(args);
@@ -34,11 +51,10 @@ public class RPN {
 	}
 
 
-	private Command getCommand(String expression) {
+	private Command getCommand(String expression) throws Exception {
 
 		Command ret;
 
-		try{
 			if (expression.toLowerCase().contains("print")) {
 				ret = new Print(expression);
 			} else if (expression.toLowerCase().contains("let")) {
@@ -48,9 +64,7 @@ public class RPN {
 			} else {
 				ret = new Expression(expression);
 			}
-		} catch (Exception expressn) {
-			System.err.println("something happened");
-		}
+
 		ret = null;
 
 		return ret;
