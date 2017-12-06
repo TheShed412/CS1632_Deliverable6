@@ -42,11 +42,16 @@ public class RPNFileReader implements RPNReader {
   }
 
   public String nextLine() {
+    String filename = "";
     // At the beginning and no files open yet
     if(lineNumber == 0 && hasFile()) {
       try {
-        currentReader = new BufferedReader(new FileReader(fileNames.remove()));
-      } catch(FileNotFoundException fnfe) {}
+        filename = fileNames.remove();
+        currentReader = new BufferedReader(new FileReader(filename));
+      } catch(FileNotFoundException fnfe) {
+        System.err.println("File \"" + filename + "\" does not exist.");
+        System.exit(-1);
+      }
     }
 
     // Initialize line to token value
@@ -59,12 +64,16 @@ public class RPNFileReader implements RPNReader {
 
       if(line == null && hasFile()) {
         try {
-          currentReader = new BufferedReader(new FileReader(fileNames.remove()));
+          filename = fileNames.remove();
+          currentReader = new BufferedReader(new FileReader(filename));
           continue;
-        } catch(FileNotFoundException fnfe) {}
+        } catch(FileNotFoundException fnfe) {
+          System.err.println("File \"" + filename + "\" does not exist.");
+          System.exit(-1);
+        }
       }
 
-      if(line == null) return null;
+      if(line == null) return "QUIT";
 
       if(!line.equals("")) reading = false;
     }
