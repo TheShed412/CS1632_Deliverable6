@@ -36,7 +36,7 @@ public class SymbolTableTests {
 	 * the same value are stored correctly
 	*/
 	@Test
-	public void sameValueDifferentKey() {
+	public void sameValueDifferentKey() throws Exception {
 
 		SymbolTable st = new SymbolTable();
 
