@@ -16,6 +16,7 @@ public class RPNFileReader implements RPNReader {
   private Queue<String> fileNames;
 
   private BufferedReader currentReader = null;
+  private int line = 0;
 
 
   public RPNFileReader(String[] filenames) {
