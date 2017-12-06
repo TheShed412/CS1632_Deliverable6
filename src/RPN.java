@@ -66,8 +66,6 @@ public class RPN {
 				ret = new Expression(expression);
 			}
 
-		ret = null;
-
 		return ret;
 	}
 
