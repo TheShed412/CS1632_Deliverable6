@@ -33,7 +33,7 @@ public class RPN {
 					try{
 						cmd = getCommand(expression);
 					} catch (Exception e) {
-						System.err.println("Line "+ currentLine + ": something happened");
+						System.err.println("Line: "+ currentLine + " " + e.getMessage());
 						continue;
 					}
 
@@ -42,8 +42,7 @@ public class RPN {
 						value = cmd.evaluate(st);
 						System.out.println(value.toString());
 					} catch (Exception e) {
-						System.err.println("Line "+ currentLine + ": something happened in eval");
-						e.printStackTrace(System.err);
+						System.err.println("Line: "+ currentLine + " " + e.getMessage());
 					}
 
 

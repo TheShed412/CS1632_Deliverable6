@@ -80,8 +80,14 @@ public class Expression implements Command {
 				rpnStack.push(new BigInteger(token));
 			} else {
 				// if it's an operator, we operate on the last 2 values
-				BigInteger tok1 = rpnStack.pop();
-				BigInteger tok2 = rpnStack.pop();
+				BigInteger tok1;
+				BigInteger tok2;
+				try {
+					tok1 = rpnStack.pop();
+					tok2 = rpnStack.pop();
+				} catch (Exception e) {
+					throw new Exception("operator "+ token +" applied to empty stack");
+				}
 
 				switch(token) {
 					case "+":
@@ -105,7 +111,7 @@ public class Expression implements Command {
 		}//for
 
 		if (rpnStack.size() > 1) {
-			throw new Exception("malformed expression");
+			throw new Exception(rpnStack.size() + " elements in stack after eveluation");
 		}
 
 		//have to change eturn value to BigInt
