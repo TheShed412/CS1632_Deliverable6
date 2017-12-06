@@ -65,7 +65,7 @@ public class Expression implements Command {
 	public BigInteger evaluate(SymbolTable st) throws Exception {
 
 		if (!checkValidExpression()) {
-			throw new Exception("invalid tokens");
+			throw new Exception("unknown keyword" + expression[0]);
 		}
 
 		getValuesFromST(st); //moves values to expression
@@ -103,7 +103,7 @@ public class Expression implements Command {
 						rpnStack.push(tok2.divide(tok1));
 						break;
 					default:
-						throw new Exception("unknown keyword");
+						throw new Exception("unknown keyword" + token);
 
 				}//switch
 			}//else
@@ -115,7 +115,7 @@ public class Expression implements Command {
 		}
 
 		if (rpnStack.size() < 1) {
-			throw new Exception(rpnStack.size() + " operator LET applied to empty stack");
+			throw new Exception(" operator LET applied to empty stack");
 		}
 
 		//have to change eturn value to BigInt
